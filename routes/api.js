@@ -10,21 +10,30 @@ module.exports = function (app) {
   // Test #2
   // GET /api/convert
   app.route("/api/convert").get(function(req, res){
-    let Input = req.query.input;
-    const inputUnit = convertHandler.getUnit(Input);
-    const inputNumber = convertHandler.getNum(Input);
-    // const returnUnit = convertHandler.getReturnUnit(inputUnit);
-    const convertedObject = convertHandler.convert(inputNumber, inputUnit);
-    const returnNum = convertedObject.returnNum;
-    const returnUnit = convertedObject.returnUnit;
+    let input = req.query.input;
+    let initNum = convertHandler.getNum(input);
+    let initUnit = convertHandler.getUnit(input);
+    if (!initNum && !initUnit) {
+      res.send("invalid number and unit");
+      return;
+    } else if (!initNum) {
+      res.send("invalid number");
+      return;
+    } else if (!initUnit) {
+      res.send("invalid unit");
+      return;
+    }
+    let returnNum = convertHandler.convert(initNum, initUnit).returnNum;
+    let returnUnit = convertHandler.getReturnUnit(initUnit);
+    let toString = convertHandler.getString(
+      initNum,
+      initUnit,
+      returnNum,
+      returnUnit
+    );
 
-    res.json({"initNum": inputNumber,
-      "initUnit": inputUnit,
-      "returnNum": returnNum,
-      "returnUnit": returnUnit,
-      "string": convertHandler.getString(inputNumber, inputUnit, returnNum, returnUnit)
-    });
-    
-
+    //res.json
+    res.json({ initNum, initUnit, returnNum, returnUnit, string: toString });
+  
   }); 
 };
