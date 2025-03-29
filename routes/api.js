@@ -33,7 +33,7 @@ module.exports = function (app) {
     );
 
     //res.json
-    res.json({ initNum, initUnit, returnNum, returnUnit, string: toString });
+    res.json({ initNum, initUnit, returnNum: new Number(returnNum), returnUnit, string: toString});
   
   }); 
 };
