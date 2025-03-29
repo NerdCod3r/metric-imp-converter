@@ -35,20 +35,25 @@ function ConvertHandler() {
       unitValue = input.slice(splitIndex);
     } else{
       unitValue = input;
-      return unitValue;
     }
+    result = unitValue.toLowerCase();
 
-    const inputUnits = ["GAL", "L", "MI", "KM", "LBS", "KG"];
-    if ( inputUnits.indexOf(unitValue.toUpperCase()) == -1 ){
-      result = undefined;
-    } else {
-      if (unitValue.toUpperCase() === 'L') {
-        result = unitValue;
-      }else{
-        result = unitValue.toLowerCase();
-      }
+    switch (result) {
+      case "km":
+        return "km";
+      case "gal":
+        return "gal";
+      case "lbs":
+        return "lbs";
+      case "mi":
+        return "mi";
+      case "l":
+        return "L";
+      case "kg":
+        return "kg";
+      default:
+        return undefined;
     }
-    return result;
   };
   
   this.getReturnUnit = function(initUnit) {
