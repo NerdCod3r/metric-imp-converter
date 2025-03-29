@@ -42,7 +42,11 @@ function ConvertHandler() {
     if ( inputUnits.indexOf(unitValue.toUpperCase()) == -1 ){
       result = undefined;
     } else {
-      result = unitValue;
+      if (unitValue.toUpperCase() === 'L') {
+        result = unitValue;
+      }else{
+        result = unitValue.toLowerCase();
+      }
     }
     return result;
   };
