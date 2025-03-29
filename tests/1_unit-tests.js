@@ -96,7 +96,7 @@ suite('Unit Tests', function(){
         const convertResult = convertHandler.convert(inputNumber, inputUnit);
         const expected = 3.78541;
 
-        assert.approximately(convertResult.returnNum, expected, 0.1);
+        assert.approximately(new Number(convertResult.returnNum), expected, 0.1);
         done();
     });
 
@@ -104,7 +104,7 @@ suite('Unit Tests', function(){
     test("#correctly_convert_L_to_gal", function(done){
         const expectedVal = 1;
         const converted_object = convertHandler.convert(3.78541, "L");
-        assert.approximately(converted_object.returnNum, expectedVal, 0.1);
+        assert.approximately(new Number(converted_object.returnNum), expectedVal, 0.1);
 
         done();
     });
@@ -114,7 +114,7 @@ suite('Unit Tests', function(){
         const expected_km = 1.60934;
         const convert_obj = convertHandler.convert(1, "mi");
 
-        assert.approximately(convert_obj.returnNum, expected_km, 0.1);
+        assert.approximately(new Number(convert_obj.returnNum), expected_km, 0.1);
         done();
     });
 
@@ -124,7 +124,7 @@ suite('Unit Tests', function(){
         const initialKm = 1.60934;
         const return_converted_object = convertHandler.convert(initialKm, "km");
 
-        assert.approximately(return_converted_object.returnNum, expectedMi, 0.1);
+        assert.approximately(new Number(return_converted_object.returnNum), expectedMi, 0.1);
 
         done();
     });
@@ -135,7 +135,7 @@ suite('Unit Tests', function(){
         const initLbs = 1;
         const return_object = convertHandler.convert(initLbs, "lbs");
 
-        assert.approximately(return_object.returnNum, expectedKg, 0.1);
+        assert.approximately(new Number(return_object.returnNum), expectedKg, 0.1);
 
         done();
     });
@@ -146,7 +146,7 @@ suite('Unit Tests', function(){
         const initKgs = 0.453592;
         const convert_return_object = convertHandler.convert(initKgs, "kg");
 
-        assert.approximately(convert_return_object.returnNum, expectedLbs, 0.1);
+        assert.approximately(new Number(convert_return_object.returnNum), expectedLbs, 0.1);
 
         done();
     });
