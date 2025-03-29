@@ -63,6 +63,9 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
+    if (unit == undefined){
+      return undefined;
+    }
     let result;
     const initUnits = ["gal", "L", "mi", "km", "lbs", "kg"];
     const spelledOutUnits = ["gallons", "liters", "miles", "kilometers", "pounds", "kilograms" ];
@@ -80,7 +83,17 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-
+    if (initUnit === undefined){
+      return {
+        "returnNum": -1, 
+        "returnUnit": undefined
+      };
+    } else if (initNum === undefined){
+      return {
+        "returnNum": undefined,
+        "returnUnit": undefined
+      };
+    }
     const initUnits = ["gal", "L", "mi", "km", "lbs", "kg"];
     let tempUpperCaseInitUnits = [];
     initUnits.forEach((unit, Index)=>{
@@ -157,7 +170,11 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`;
+    let result;
+    if ( initNum && initUnit && returnNum && returnUnit) {
+
+      result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`;
+    }
     
     return result;
   };
