@@ -1,6 +1,7 @@
 const chai = require('chai');
 let assert = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');
+const server = require("../server.js");
 
 let convertHandler = new ConvertHandler();
 
@@ -169,7 +170,7 @@ suite('Unit Tests', function(){
     });
 
     });
-    
+
 after(function() {
         chai.request(server)
           .get('/')
