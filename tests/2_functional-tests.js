@@ -20,8 +20,8 @@ suite('Functional Tests', function() {
                 assert.equal(res.body.initUnit, "L");
                 assert.approximately(res.body.returnNum, 2.64172, 0.1 );
                 assert.equal(res.body.returnUnit, "gal");
+                done();
             });
-            done();
     });
 
     // Test #2
@@ -34,8 +34,8 @@ suite('Functional Tests', function() {
             assert.equal(res.status, 200);
             assert.equal(res.body.initNum, undefined);
             assert.equal(res.body.initUnit, undefined);
+            done();
         });
-        done();
     });
 
     // Test #3
@@ -47,8 +47,8 @@ suite('Functional Tests', function() {
             .end(function(err, res){
                 assert.equal(res.status, 200);
                 assert.equal(res.body.initNum, undefined);
+                done();
             });
-            done();
     });
 
     // Test #4
@@ -61,8 +61,8 @@ suite('Functional Tests', function() {
                 assert.equal(res.status, 200);
                 assert.equal(res.body.initNum, undefined);
                 assert.equal(res.body.initUnit, undefined);
+                done();
             });
-            done();
     });
 
     // Test #5
@@ -76,8 +76,8 @@ suite('Functional Tests', function() {
                 assert.equal(res.body.initNum, 1);
                 assert.equal(res.body.initUnit, "kg");
                 assert.approximately(res.body.returnNum, 2.20462, 0.1);
+                done();
             });
-            done();
     });
         });
         
