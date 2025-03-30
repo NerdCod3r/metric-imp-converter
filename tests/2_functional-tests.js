@@ -21,11 +21,7 @@ suite('Functional Tests', function() {
                 assert.approximately(res.body.returnNum, 2.64172, 0.1 );
                 assert.equal(res.body.returnUnit, "gal");
                 done();
-            })
-            .after(function() {
-                chai.request(server)
-                  .get('/')
-              });
+            });
     });
 
     // Test #2
@@ -39,11 +35,7 @@ suite('Functional Tests', function() {
             assert.equal(res.body.initNum, undefined);
             assert.equal(res.body.initUnit, undefined);
             done();
-        })
-        .after(function() {
-            chai.request(server)
-              .get('/')
-          });
+        });
     });
 
     // Test #3
@@ -56,10 +48,6 @@ suite('Functional Tests', function() {
                 assert.equal(res.status, 200);
                 assert.equal(res.body.initNum, undefined);
                 done();
-            })
-            .after(function() {
-                chai.request(server)
-                  .get('/')
             });
     });
 
@@ -74,10 +62,6 @@ suite('Functional Tests', function() {
                 assert.equal(res.body.initNum, undefined);
                 assert.equal(res.body.initUnit, undefined);
                 done();
-            })
-            .after(function() {
-                chai.request(server)
-                  .get('/')
             });
     });
 
@@ -94,14 +78,13 @@ suite('Functional Tests', function() {
                 assert.approximately(res.body.returnNum, 2.20462, 0.1);
                 done();
             })
-            .after(function() {
-                chai.request(server)
-                  .get('/');
-              });
     });
         });
         
 
     });
-
+    after(function() {
+        chai.request(server)
+          .get('/')
+      });
 });
