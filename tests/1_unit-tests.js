@@ -1,11 +1,14 @@
 const chai = require('chai');
 let assert = chai.assert;
 const ConvertHandler = require('../controllers/convertHandler.js');
+const { Suite } = require('mocha');
 
 let convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function(){
-    // test #1
+    suite("convertHandler.getNum(input)", function(){
+
+        // test #1
     test('#correctlyReadWholeNumberInput', function(done){
         let input = "32L";
         assert.equal(convertHandler.getNum(input), 32);
@@ -47,7 +50,11 @@ suite('Unit Tests', function(){
         done();
     });
 
-    // test #7
+    });
+
+    suite("convertHandlder.getUnit(input)", function(){
+
+        // test #7
     test('#correctlyReadValidInputUnit', function(done){
         let input = ["gal", "L", "mi", "km", "lbs", "kg"];
         let output = ["gal", "L", "mi", "km", "lbs", "kg"];
@@ -65,18 +72,26 @@ suite('Unit Tests', function(){
         done();
     });
 
-    // test #9
-    test("#correctlyReadInputUnitAndReturnCorrectReturnUnit", function(done){
-            let inputUnits = ["gal", "L", "mi", "km", "lbs", "kg"];
-            let outputUnits =["L", "gal", "km", "mi", "kg", "lbs"];
-
-            inputUnits.forEach((Unit, Index)=>{
-                assert.equal(convertHandler.getReturnUnit(Unit), outputUnits[Index])
-            });
-            done();
     });
 
-    // test #10
+    suite("convertHandler.getReturnUnit(unit)", function(){
+
+        // test #9
+    test("#correctlyReadInputUnitAndReturnCorrectReturnUnit", function(done){
+        let inputUnits = ["gal", "L", "mi", "km", "lbs", "kg"];
+        let outputUnits =["L", "gal", "km", "mi", "kg", "lbs"];
+
+        inputUnits.forEach((Unit, Index)=>{
+            assert.equal(convertHandler.getReturnUnit(Unit), outputUnits[Index])
+        });
+        done();
+    });
+
+    });
+
+    
+    suite("convertHandler.spellOutUnit(initUnit)", function(){
+        // test #10
     test("#forEachValidInputUnit_ReturnASpellOutForTheUnit", function(done){
         let inputUnits = ["gal", "L", "mi", "km", "lbs", "kg"];
         let spelledOutInputUnits =  ["gallons", "liters", "miles", "kilometers", "pounds", "kilograms" ];
@@ -87,8 +102,11 @@ suite('Unit Tests', function(){
 
         done();
     });
+});
 
-    // test #11
+    suite("convertHandler.convert(initNum, initUnit)", function(){
+
+        // test #11
     test("#correctlyConvert_gal_To_L", function(done){
         let input = "gal";
         let inputNumber = convertHandler.getNum(input);
@@ -150,5 +168,8 @@ suite('Unit Tests', function(){
 
         done();
     });
+    
+    });
+
 
 });
