@@ -157,23 +157,18 @@ function ConvertHandler() {
    // Do the math
    switch(initUnitIndex){
     case 1:
-      result /= galToL;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      
+      return {"returnNum": new Number(result /= galToL).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
     case 0:
-      result*= galToL;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      return {"returnNum": new Number(result*= galToL).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
     case 2:
-      result*=miToKm;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      return {"returnNum": new Number(result*=miToKm).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
     case 3:
-      result/=miToKm;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      return {"returnNum": new Number(result/=miToKm).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
     case 4:
-      result*=lbsToKg;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      return {"returnNum": new Number(result*=lbsToKg).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
     case 5:
-      result/=lbsToKg;
-      return {"returnNum": result.toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
+      return {"returnNum": new Number(result/=lbsToKg).toFixed(5), "returnUnit":this.getReturnUnit(initUnits[initUnitIndex]) };
    }
 
   };
